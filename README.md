@@ -66,6 +66,10 @@ Os módulos poderão se comunicar entre si por meio dos contratos definidos.
 └── main.py
 ```
 
+## 📚 Mais informações
+
+Para mais informações [clique aqui](docs/README.md).
+
 ## 🏃‍♂️‍➡️ Execução
 
 ```bash

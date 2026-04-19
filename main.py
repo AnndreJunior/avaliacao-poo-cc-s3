@@ -1,7 +1,10 @@
 from app.utils import show_message
+from app.modules.bancos import Banco
 
 
 def main():
+    banco = Banco()
+
     while True:
         try:
             print("1. Criar conta")

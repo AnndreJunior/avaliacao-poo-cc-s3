@@ -1,7 +1,12 @@
-from app.utils import show_message, clean
+from typing import TypeGuard
+from app.utils import show_message, clean, next
 from app.modules.bancos import Banco
 from app.modules.clientes import Cliente
 from app.modules.contas import ContaCorrente, ContaPoupanca, Conta
+
+
+def conta_selecionada(conta: Conta | None) -> TypeGuard[Conta]:
+    return conta is not None
 
 
 def main():
@@ -57,7 +62,7 @@ def main():
                         show_message("A conta deve ser do tipo corrente ou poupança")
 
                 case 2:
-                    if conta is None:
+                    if not conta_selecionada(conta):
                         raise Exception("Nenhuma conta foi selecionada")
 
                     valor = float(input("Valor para depósito: "))
@@ -66,7 +71,7 @@ def main():
                     clean()
 
                 case 3:
-                    if conta is None:
+                    if not conta_selecionada(conta):
                         raise Exception("Nenhuma conta foi selecionada")
 
                     valor = float(input("Valor para saque: "))

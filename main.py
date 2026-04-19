@@ -87,7 +87,24 @@ def main():
                     next()
 
                 case 5:
-                    pass
+                    if not conta_selecionada(conta):
+                        raise Exception("Nenhuma conta foi selecionada")
+
+                    print("Histórico de operações")
+                    print(f"Conta: {conta.numero}")
+                    print(f"Titular: {conta.cliente.nome}")
+                    print("\n")
+
+                    if not conta.historico.listar():
+                        print("Nenhuma operação foi realizada")
+
+                    for operacao in conta.historico.listar():
+                        print(f"tipo: {operacao.tipo}; valor: R${operacao.valor}")
+                        print("-------------------------------------------------")
+
+                    print("")
+
+                    next()
 
                 case 0:
                     break

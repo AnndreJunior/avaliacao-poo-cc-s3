@@ -1,9 +1,12 @@
-from app.utils import show_message
+from app.utils import show_message, clean
 from app.modules.bancos import Banco
+from app.modules.clientes import Cliente
+from app.modules.contas import ContaCorrente, ContaPoupanca, Conta
 
 
 def main():
     banco = Banco()
+    conta: Conta | None = None
 
     while True:
         try:
@@ -20,9 +23,38 @@ def main():
             if not opcao:
                 raise Exception("Selecione uma opção válida")
 
+            clean()
+
             match int(opcao):
                 case 1:
-                    pass
+                    while True:
+                        nome = input("Informe o seu nome: ")
+                        senha = input("Crie uma senha: ")
+
+                        try:
+                            cliente = Cliente(nome, senha)
+                            break
+                        except Exception as e:
+                            show_message(e)
+
+                    while True:
+                        tipo = input(
+                            "Informe o tipo da conta [Corrente/Poupança]: "
+                        ).lower()
+
+                        if tipo in ["corrente", "poupança"]:
+                            conta = (
+                                ContaCorrente(cliente)
+                                if tipo == "corrente"
+                                else ContaPoupanca(cliente)
+                            )
+                            banco.adicionar_conta(conta)
+
+                            show_message("Conta criada com sucesso!")
+
+                            break
+
+                        show_message("A conta deve ser do tipo corrente ou poupança")
 
                 case 2:
                     pass

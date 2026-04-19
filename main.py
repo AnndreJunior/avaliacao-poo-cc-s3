@@ -66,7 +66,13 @@ def main():
                     clean()
 
                 case 3:
-                    pass
+                    if conta is None:
+                        raise Exception("Nenhuma conta foi selecionada")
+
+                    valor = float(input("Valor para saque: "))
+                    conta.sacar(valor)
+
+                    clean()
 
                 case 4:
                     pass

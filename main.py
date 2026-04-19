@@ -57,7 +57,13 @@ def main():
                         show_message("A conta deve ser do tipo corrente ou poupança")
 
                 case 2:
-                    pass
+                    if conta is None:
+                        raise Exception("Nenhuma conta foi selecionada")
+
+                    valor = float(input("Valor para depósito: "))
+                    conta.depositar(valor)
+
+                    clean()
 
                 case 3:
                     pass

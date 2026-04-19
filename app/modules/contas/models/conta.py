@@ -28,7 +28,7 @@ class Conta(ABC):
         return self._historico
 
     def depositar(self, valor: float):
-        if valor < 0:
+        if valor <= 0:
             raise Exception("O valor para depósito deve ser maior que zero")
 
         self._saldo += valor
@@ -39,7 +39,7 @@ class Conta(ABC):
         pass
 
     def _validar_valor_saque(self, valor: float) -> None:
-        if valor < 0:
+        if valor <= 0:
             raise Exception("O valor de saque deve ser maior que zero")
 
         if valor > self._saldo:

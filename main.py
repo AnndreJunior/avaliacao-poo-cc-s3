@@ -80,7 +80,11 @@ def main():
                     clean()
 
                 case 4:
-                    pass
+                    if not conta_selecionada(conta):
+                        raise Exception("Nenhuma conta foi selecionada")
+
+                    print(f"Saldo atual: R${conta.saldo}")
+                    next()
 
                 case 5:
                     pass
